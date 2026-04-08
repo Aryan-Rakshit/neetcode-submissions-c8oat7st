@@ -1,0 +1,28 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        // create array of 26 characters and keep count of 
+        // characters in first string
+
+        // then go through second string and subtract
+        // characters from count array  when they are seen
+
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        int[] char_counts = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            char_counts[s.charAt(i) - 'a']++;
+            char_counts[t.charAt(i) - 'a']--;
+
+        }
+
+        for (int i = 0; i < char_counts.length; i++) {
+            if (char_counts[i] != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
